@@ -1,22 +1,23 @@
 {
   "name": "coastered-bias-chart",
+  "homepage": "https://dawson-park.github.io/coastered-bias-chart/",
   "version": "1.0.0",
-  "description": "",
+  "description": "기존 편향성 과제를 컴포넌트화 한 프로젝트",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf lib",
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "build-storybook": "build-storybook"
   },
-  "author": "Dawson",
+  "author": "Dawson-Park",
   "license": "MIT",
   "dependencies": {
     "highcharts": "^10.0.0",
-    "styled-components": "^5.3.5"
-  },
-  "peerDependencies": {
+    "styled-components": "^5.3.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -34,6 +35,8 @@
     "@storybook/react": "^6.4.21",
     "@storybook/testing-library": "0.0.9",
     "babel-loader": "^8.2.4",
+    "gh-pages": "^3.2.3",
+    "prop-types": "^15.8.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1"
   }

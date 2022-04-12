@@ -1,3 +1,4 @@
-import Button from "./components/Button/Button";
+import Bar from "./components/Bar";
+import Bar3d from "./components/Bar3d";
 
-export { Button };
+export { Bar, Bar3d };
