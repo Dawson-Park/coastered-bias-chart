@@ -6,12 +6,12 @@ import PropTypes from "prop-types";
 
 /**
  * Polar Chart를 그리는 컴포넌트 입니다.<br>
- * <b>id</b> : <i>{string}</i> - 차트를 생성할 div에 부여하는 아이디 값 입니다.<br>
- * <b>xAxis</b> : <i>{string[]}</i> - x축의 값 입니다.<br>
- * <b>series</b> : <i>{number[]|number[][]}</i> - 입력된 xAxis에 맞춰서 데이터가 표시됩니다.<br>
- * <b>colors</b> : <i>{string|string[]}</i> - series의 색상을 결정합니다.<br>
- * <b>options</b> : <i>{Object}</i> - 차트에 대한 설정값입니다.<br>
- * <b>style</b> : <i>{CSSProperties}</i> - Bar container에 대한 css 값입니다.<br>
+ * <b>id</b> : <i style='color:#1ea7fd'>string</i> - 차트를 생성할 div에 부여하는 아이디 값 입니다.<br>
+ * <b>xAxis</b> : <i style='color:#1ea7fd'>string[]</i> - x축의 값 입니다.<br>
+ * <b>series</b> : <i style='color:#1ea7fd'>number[]|Array<number[]></i> - 차트에 표시할 데이터로, Polar는 number타입의 배열 또는 2차원 배열을 요구합니다.<br>
+ * <b>colors</b> : <i style='color:#1ea7fd'>string|string[]></i> - series의 색상을 결정합니다.<br>
+ * <b>options</b> : <i style='color:#1ea7fd'>Object</i> - 차트에 대한 설정값입니다.<br>
+ * <b>style</b> : <i style='color:#1ea7fd'>CSSProperties</i> - Bar container에 대한 css 값입니다.<br>
  */
 export default function Polar(
 	{ id, xAxis, series=[], colors="", options={}, style={} }
@@ -83,21 +83,21 @@ export default function Polar(
 }
 
 Polar.propTypes = {
-	id: PropTypes.string.isRequired, // string @require
-	xAxis: PropTypes.arrayOf(PropTypes.string).isRequired, // string[] @require
+	id: PropTypes.string.isRequired,
+	xAxis: PropTypes.arrayOf(PropTypes.string).isRequired,
 	series: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.number), // number[]
-		PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)) // number[][]
-	]).isRequired, // @require
+		PropTypes.arrayOf(PropTypes.number),
+		PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
+	]).isRequired,
 	colors: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.arrayOf(PropTypes.string)
-	]), // string|string[] @optional
-	yAxis: PropTypes.arrayOf(PropTypes.string), // string[] @optional
+	]),
+	yAxis: PropTypes.arrayOf(PropTypes.string),
 	options: PropTypes.exact({
-		title: PropTypes.string, // string
-		subtitle: PropTypes.string, // string
-		legend: PropTypes.bool // boolean
-	}), // @optional
-	style: PropTypes.object // object @optional
+		title: PropTypes.string,
+		subtitle: PropTypes.string,
+		legend: PropTypes.bool
+	}),
+	style: PropTypes.object
 }
