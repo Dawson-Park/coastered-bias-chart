@@ -4,5 +4,3 @@ package-lock.json
 /node_modules
 /lib
 /storybook-static
-/.storybook
-/src/stories
