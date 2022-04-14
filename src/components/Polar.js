@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
 export default function Polar(
 	{ id, xAxis, series=[], colors="", options={}, style={} }
 ) {
-	const chartOptions = useChart([], colors, options);
+	const commonOpts = useChart([], colors, options);
 
 	const refinedSeries = useMemo(() => {
 		if(typeof series[0] === 'number') {
@@ -34,7 +34,7 @@ export default function Polar(
 
 	useEffect(() => {
 		Highcharts.chart({
-			...chartOptions,
+			...commonOpts,
 			series: refinedSeries,
 			chart: {
 				polar: true,
@@ -51,10 +51,6 @@ export default function Polar(
 				verticalAlign: 'middle',
 				layout: 'vertical'
 			},
-			// tooltip: {
-			// 	shared: true,
-			// 	pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
-			// },
 			pane: {
 				startAngle: 0,
 				endAngle: 360
@@ -77,7 +73,7 @@ export default function Polar(
 				}]
 			}
 		});
-	}, [id, xAxis, chartOptions])
+	}, [id, xAxis, commonOpts])
 
 	return <StyledChart id={id} style={style} />
 }

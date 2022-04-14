@@ -20,11 +20,11 @@ const colorset = ["rgba(124, 181, 236, 0.9)", "rgba(255, 0, 0, 0.6)", "rgba(92, 
 export default function Bar3d(
 	{ id, xAxis, series, options={}, style={} }
 ) {
-	const chartOptions = useChart(series, colorset, options);
+	const commonOpts = useChart(series, colorset, options);
 
 	useEffect(() => {
 		Highcharts.chart({
-			...chartOptions,
+			...commonOpts,
 			chart: {
 				renderTo: id,
 				type: 'column',
@@ -44,13 +44,8 @@ export default function Bar3d(
 			yAxis: {
 				tickInterval: 10
 			},
-			// zAxis: {
-			// 	min: 0, max: 3,
-			// 	categories: ["", series[0].name, series[1].name, ""],
-			// 	labels: { rotation: 20, y: 30 },
-			// },
 		});
-	}, [id, xAxis, chartOptions])
+	}, [id, xAxis, commonOpts])
 
 	return <StyledChart id={id} style={style} />
 }

@@ -34,11 +34,11 @@ export default function Scatter(
 		}
 	}, [series, colors])
 
-	const chartOptions = useChart(series, colors.length ? colors:colorSet, options);
+	const commonOpts = useChart([], colors.length ? colors:colorSet, options);
 
 	useEffect(() => {
 		Highcharts.chart({
-			...chartOptions,
+			...commonOpts,
 			series: refinedSeries,
 			chart: {
 				renderTo: id,
@@ -90,7 +90,7 @@ export default function Scatter(
 				}
 			},
 		});
-	}, [id, xAxis, chartOptions])
+	}, [id, xAxis, commonOpts])
 
 	return <StyledChart id={id} style={style} />
 }

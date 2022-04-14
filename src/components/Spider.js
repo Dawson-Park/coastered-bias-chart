@@ -19,7 +19,7 @@ factory(Highcharts);
 export default function Spider(
 	{ id, xAxis, series=[], colors="", options={}, style={} }
 ) {
-	const chartOptions = useChart([], colors, options);
+	const commonOpts = useChart([], colors, options);
 
 	const refinedSeries = useMemo(() => {
 		if(typeof series[0] === 'number') {
@@ -37,7 +37,7 @@ export default function Spider(
 
 	useEffect(() => {
 		Highcharts.chart({
-			...chartOptions,
+			...commonOpts,
 			series: refinedSeries,
 			chart: {
 				polar: true,
@@ -84,7 +84,7 @@ export default function Spider(
 				}]
 			}
 		});
-	}, [id, xAxis, chartOptions])
+	}, [id, xAxis, commonOpts])
 
 	return <StyledChart id={id} style={style} />
 }

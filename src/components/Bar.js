@@ -17,11 +17,11 @@ export default function Bar(
 	{ id, xAxis, series=[], colors="", options={}, style={} }
 ) {
 
-	const chartOptions = useChart(series, colors, options);
+	const commonOpts = useChart(series, colors, options);
 
 	useEffect(() => {
 		Highcharts.chart({
-			...chartOptions,
+			...commonOpts,
 			chart: {
 				renderTo: id,
 				type: 'column'
@@ -30,7 +30,7 @@ export default function Bar(
 				categories: xAxis
 			},
 		});
-	}, [id, xAxis, chartOptions])
+	}, [id, xAxis, commonOpts])
 
 	return <StyledChart id={id} style={style} />
 }
