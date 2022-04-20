@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo, useRef,} from "react";
-import MakeChart from "../hooks/MakeFfnnChart";
+import React, { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import MakeChart from "../hooks/MakeFfnnChart";
 
 const defaultNode = {
 	input: 1,
@@ -26,7 +26,7 @@ const StyledDiv = styled.div`
 `
 
 export default function FFNN({ id, node=defaultNode, layer=1, accent=[], options=defaultOptions }) {
-	const divRef = useRef();
+	// const divRef = useRef();
 
 	const config = useMemo(() => {
 		return {
@@ -51,10 +51,10 @@ export default function FFNN({ id, node=defaultNode, layer=1, accent=[], options
 
 	useEffect(() => {
 		MakeChart(config);
-	}, [config, divRef]);
+	}, [config, /*divRef*/]);
 
 	return (
-		<StyledDiv ref={divRef}>
+		<StyledDiv>
 			<svg id={id} width="260px" height="60px" />
 		</StyledDiv>
 	)
