@@ -21,7 +21,7 @@ export default function MakeCnnHistogram(config, series) {
 
 		// get X, Y Position
 		const sh = config.height - config.innerHeight;
-		let intvArr = getInnerXPos(series, fy);
+		let intvArr = getInnerXPos(series);
 
 		// draw Summay Chart
 		_loopSummaryChart(series, intvArr)
@@ -30,7 +30,7 @@ export default function MakeCnnHistogram(config, series) {
 		 * Area 그래프를 Y축에 맞게 출력하기 위한 메소드
 		 * @param data {Array<Object>}
 		 */
-		function getInnerXPos(data, fy) {
+		function getInnerXPos(data) {
 			let prev=0; let now=0; let intv=0; let intvArr = [];
 			for(let i=0; i<data.length; i++) {
 				if(prev !== 0) {
